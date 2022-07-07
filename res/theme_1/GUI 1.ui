@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="GUI 1" cloudDestinationProperty="GUI 1" >
+  <component type="Table" name="Table" cloudDestinationProperty="Table" >
+  </component>
+  <component type="Tree" name="Tree" cloudDestinationProperty="Tree" >
+  </component>
+  <component type="WebBrowser" name="WebBrowser" cloudDestinationProperty="WebBrowser" >
+  </component>
+</component>

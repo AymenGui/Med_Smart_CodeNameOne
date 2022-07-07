@@ -1,0 +1,1 @@
+"# Med_Smart_CodeNameOne"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/AymenGui/Med_Smart_CodeNameOne.gitgit push -u origin main
