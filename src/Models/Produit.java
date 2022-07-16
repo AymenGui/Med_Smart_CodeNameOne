@@ -13,7 +13,17 @@ import java.util.ArrayList;
  */
 public class Produit {
     
-    //var
+    //
+    
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     private String name;
     private String Id_physique;
     private double qte;
@@ -23,8 +33,15 @@ public class Produit {
     public Produit() {
     }
 
-    
-    public Produit(String name, String Id_physique , double qte , double id_etap ) {
+      public Produit(String name, String Id_physique , double qte , double id_etap ) {
+        
+        this.name = name;
+        this.Id_physique = Id_physique;
+        this.qte = qte;
+        this.id_etap = id_etap;
+    }
+    public Produit(long id,String name, String Id_physique , double qte , double id_etap ) {
+        this.id=id;
         this.name = name;
         this.Id_physique = Id_physique;
         this.qte = qte;
@@ -65,7 +82,7 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "name=" + name + ", Id_physique=" + Id_physique + ", qte=" + qte + ", id_etap=" + id_etap + '}';
+        return "Produit{" +  "id=" + id +"name=" + name + ", Id_physique=" + Id_physique + ", qte=" + qte + ", id_etap=" + id_etap + '}';
     }
 
 

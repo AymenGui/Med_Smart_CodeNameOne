@@ -34,6 +34,16 @@ public class Home extends Form {
            this.getToolbar().addCommandToLeftSideMenu("Ajouter etablissement", null, (evt) -> {
                new AddTablissement(theme).show();
         });
+           this.getToolbar().addCommandToLeftSideMenu("Ajouter Produit", null, (evt) -> {
+               new AddProduit(theme).show();
+        });
+             this.getToolbar().addCommandToLeftSideMenu("Liste Produits", null, (evt) -> {
+            try {
+                new ListeProduits(theme).show();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage()); 
+           }
+        });
 
 
         
