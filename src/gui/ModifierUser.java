@@ -72,7 +72,6 @@ public class ModifierUser extends Form {
                     Map<String, Object> result = new JSONParser().parseJSON(new InputStreamReader(new ByteArrayInputStream(cnxUpdatedest.getResponseData()), "UTF-8"));
 
                     Dialog.show("updated", "User Updated successfully", "ok", "");
-                                        System.out.println(user.getNumtel());
 
                     new ListUsers(theme).show();
 
