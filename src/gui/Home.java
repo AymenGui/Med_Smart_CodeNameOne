@@ -28,7 +28,7 @@ public class Home extends Form {
            }
         });
         
-        this.getToolbar().addCommandToLeftSideMenu("Ajouter Produit", null, (evt) -> {
+        this.getToolbar().addCommandToLeftSideMenu("Ajouter Utilisateur", null, (evt) -> {
                new AddUser(theme).show();
         });
         
