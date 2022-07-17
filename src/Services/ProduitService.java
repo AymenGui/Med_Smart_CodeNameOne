@@ -24,6 +24,8 @@ import Models.Produit;
  */
 public class ProduitService {
 
+    public ArrayList<Produit> Prod;
+
     //prefix
     private String produitPrefix = "/produit";
 
@@ -51,7 +53,7 @@ public class ProduitService {
     public boolean addProduit(Produit p) {
 
         //build URL
-        String addURL = Statistics.BASE_URL + produitPrefix + "/add";
+        String addURL = Statistics.BASE_URL + produitPrefix + "/add/" + p.getName() + "/" + p.getId_physique() + "/" + p.getQte() + "/" + p.getId_etap();
 
         //2
         req.setUrl(addURL);
@@ -80,28 +82,20 @@ public class ProduitService {
     }
 
     //Select
-    public List<Produit> fetchPersonnes() {
-
-        //URL
+    public ArrayList<Produit> getAllProduit() {
+        //String url = Statics.BASE_URL+"/tasks/";
         String selectURL = Statistics.BASE_URL + produitPrefix + "/showAll";
-
-        //1
-        req.setPost(false);
-        //2
         req.setUrl(selectURL);
-        //3
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                String response = new String(req.getResponseData());
-                //parsing
-                //..
-                produit = parsePro(response);
+                Prod = (ArrayList<Produit>) parsePro(new String(req.getResponseData()));
+                req.removeResponseListener(this);
             }
         });
-
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return produit;
+        System.out.println(Prod);
+        return Prod;
     }
 
     //PARSING JSON
@@ -118,6 +112,8 @@ public class ProduitService {
 
             for (Map<String, Object> item : list) {
                 Produit p = new Produit();
+                float id = Float.parseFloat(item.get("id").toString());
+                p.setId((int) id);
                 p.setName((String) item.get("Nom"));
                 p.setId_physique((String) item.get("id_physique_img"));
                 p.setQte((int) ((double) item.get("qte")));
@@ -132,6 +128,35 @@ public class ProduitService {
         }
 
         return produit;
+    }
+
+    public boolean deleProduit(Produit p) {
+
+        //build URL
+        String deleteURL = Statistics.BASE_URL + produitPrefix + "/delete";
+
+        //2
+        req.setUrl(deleteURL);
+
+        //3
+        req.setPost(true);
+
+        //4 : Transfert data
+        req.removeAllArguments();
+
+        //5
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+
+        //NetworkManager.getInstance().addToQueueAndWait(req);
+        NetworkManager.getInstance().removeErrorListener((ActionListener<NetworkEvent>) req);
+
+        return resultOK;
     }
 
 }

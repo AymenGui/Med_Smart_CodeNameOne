@@ -20,6 +20,18 @@ public class Home extends Form {
         this.setLayout(BoxLayout.y());
         this.setTitle("Acceuil");
         
+        this.getToolbar().addCommandToLeftSideMenu("Liste Utilisateurs", null, (evt) -> {
+            try {
+                new ListUsers(theme).show();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage()); 
+           }
+        });
+        
+        this.getToolbar().addCommandToLeftSideMenu("Ajouter Produit", null, (evt) -> {
+               new AddUser(theme).show();
+        });
+        
         this.getToolbar().addCommandToLeftSideMenu("Manage Files", null, (evt) -> {
             new ManageFiles(theme).show();
         });
@@ -33,6 +45,16 @@ public class Home extends Form {
          
            this.getToolbar().addCommandToLeftSideMenu("Ajouter etablissement", null, (evt) -> {
                new AddTablissement(theme).show();
+        });
+           this.getToolbar().addCommandToLeftSideMenu("Ajouter Produit", null, (evt) -> {
+               new AddProduit(theme).show();
+        });
+             this.getToolbar().addCommandToLeftSideMenu("Liste Produits", null, (evt) -> {
+            try {
+                new ListeProduits(theme).show();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage()); 
+           }
         });
 
 
