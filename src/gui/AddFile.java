@@ -46,7 +46,8 @@ public class AddFile extends Form {
         this.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, (evt) -> {
             new ManageFiles(theme).showBack();
         });
-
+         Button validate = new Button("Validate");
+      this.getToolbar().addComponent(this.add(validate));
         Label Uid = new Label("Please enter a User Id");
         TextField userId = new TextField("", "User Id");
 
@@ -61,7 +62,7 @@ public class AddFile extends Form {
 
         Button btn = new Button("Choose a file");
         ImageViewer imgview = new ImageViewer();
-        Button validate = new Button("Validate");
+       
         
         this.addComponent(Uid);
         this.addComponent(userId);
@@ -69,8 +70,9 @@ public class AddFile extends Form {
         this.addComponent(cf);
         this.addComponent(filename);
         this.addComponent(btn);
-        this.addComponent(imgview);
         this.addComponent(validate);
+        this.addComponent(imgview);
+        
 
         btn.addActionListener(e -> {
 
@@ -113,4 +115,7 @@ public class AddFile extends Form {
 
         });
     }
+    
+    
+    
 }
