@@ -37,7 +37,7 @@ public class UserService {
     List<User> listUsers = new ArrayList<User>();
 
     //constructor
-    private UserService() {
+    UserService() {
         req = new ConnectionRequest();
     }
 

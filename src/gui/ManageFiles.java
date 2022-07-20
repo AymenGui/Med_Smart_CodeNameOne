@@ -32,14 +32,18 @@ public class ManageFiles extends Form {
         Button btn = new Button("Add Files");
         btn.setIcon(theme.getImage("addfile"));
         Button btn2 = new Button("list Files");
-        Button btn3 = new Button("Edit Files");
+        // Button btn3 = new Button("Edit Files");
         this.addComponent(ddn);
         this.addComponent(btn);
         this.addComponent(btn2);
-        this.addComponent(btn3);
+        //this.addComponent(btn3);
 
         btn.addActionListener((evt) -> {
             new AddFile(theme).show();
         });
+        btn2.addActionListener((evt2) -> {
+            new ListFiles(theme).show();
+        });
+
     }
 }
